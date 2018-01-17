@@ -25,7 +25,15 @@
         .data(dataSet)
         .enter()
         .append('p')
-        .text(function(d) { return 'i be tthis can be a ' + d + ' func'; } );
+        .text((d) => 'i bet this can be a ' + d + ' func')
+        .style('color', (d) => {
+          if (d <= 10) {
+            return 'red';
+          } else if (d >= 20) {
+            return 'green';
+          }
+        })
+      ;
 
     </script>
   </body>

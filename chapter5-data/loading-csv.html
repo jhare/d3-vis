@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf8"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style type="text/css">
+      body {
+        font-family: 'Raleway', sans-serif;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      d3.csv('food.csv', (wholeThing) => {
+        console.log('the whole csv file', wholeThing);
+
+        wholeThing.forEach((food) => {
+          console.log('a food straight iteration', food);
+        });
+      });
+
+      function transformDeliciousness(foodRow) {
+        // We want to parse a member here, leave another alone.
+        return {
+          Food: foodRow.Food,
+          Deliciousness: parseInt(foodRow.Deliciousness),
+        };
+      }
+
+      // Note the only way to check for errors is to use a specific
+      // function signature that checks for parameter names. Yikes
+      d3.csv('food.csv', transformDeliciousness, (error, data) => {
+        if(error) {
+          console.log('Could not load data, bad this should work', error);
+        } else {
+          console.log('Transformed csv data, this works', data);
+        }
+      });
+
+      // Note the only way to check for errors is to use a specific
+      // function signature that checks for parameter names. Yikes
+      d3.csv('foodx.csv', transformDeliciousness, (error, data) => {
+        if(error) {
+          console.log('Could not load data, the file doesn\'t exist', error);
+        } else {
+          console.log('Transformed csv data', data);
+        }
+      });
+
+      console.log('there is a json one too', typeof d3.json);
+    </script>
+  </body>
+
+</html>
