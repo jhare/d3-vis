@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf8"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style type="text/css">
+      body {
+        font-family: 'Raleway', sans-serif;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      var dataSet = [5, 10, 15, 20, 25];
+
+      d3
+        .select('body')
+        .selectAll('p')
+        .data(dataSet)
+        .enter()
+        .append('p')
+        .text(function(d) { return 'i be tthis can be a ' + d + ' func'; } );
+
+    </script>
+  </body>
+
+</html>
