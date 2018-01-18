@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf8"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style type="text/css">
+      body {
+        font-family: 'Raleway', sans-serif;
+      }
+
+      div.bar {
+        display: inline-block;
+        width: 20px;
+        height: 75px;
+        background-color: teal;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      const dataset = [5, 10, 15, 20, 25];
+
+      const svg = d3.select('body').append('svg');
+
+      const w = 500;
+      const h = 50;
+
+      svg
+        .attr('width', 500)
+        .attr('height', 50);
+
+      const circles = svg
+        .selectAll('circle')
+        .data(dataset)
+        .enter()
+        .append('circle');
+
+      circles
+        .attr('cx', function(d, i) {
+          return (i * 50) + 25;
+        })
+        .attr('cy', h/2)
+        .attr('r', function(d) {
+          return d;
+        });
+
+    </script>
+  </body>
+
+</html>
